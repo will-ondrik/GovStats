@@ -11,3 +11,9 @@ class Authentication_Controller(Abstract_Controller):
     
     def initialize_routes(self):
         self.blueprint.add_url_rule('/delete-account', 'delete', methods=['POST'])
+        self.blueprint.add_url_rule('/login', 'login', methods=['POST'])
+        self.blueprint.add_url_rule('/logout', 'logout', methods=['POST'])
+        self.blueprint.add_url_rule('/register', 'register', methods=['POST'])
+        self.blueprint.add_url_rule('reset-password', 'reset_password', methods=['POST'])
+        self.blueprint.add_url_rule('/validate', 'validate', methods=['GET'])
+        self.blueprint.add_url_rule('/verify-email', 'verify_email', methods=['POST'])
