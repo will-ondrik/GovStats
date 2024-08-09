@@ -5,7 +5,11 @@ from sqlalchemy import Column, Integer, String
 Base = declarative_base()
 
 """
-This class represents the MembersOfParliament table in the SQL database.
+ORM model for the MembersOfParliament table.
+
+This class represents members of the Canadian Parliament and maps to the 'MembersOfParliament' table in the database.
+Each instance of this class corresponds to a row in the table, with attributes that represent the columns in the table.
+
 """
 class Members_Of_Parliament(Base):
 
