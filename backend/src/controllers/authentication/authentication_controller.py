@@ -10,6 +10,10 @@ class Authentication_Controller(Abstract_Controller):
 
     
     def initialize_routes(self):
+        """
+        This function initializes all controller endpoints.
+        The authentication service file handles all of the interactions with the endpoints.
+        """
         self.blueprint.add_url_rule('/delete-account', 'delete', methods=['POST'])
         self.blueprint.add_url_rule('/login', 'login', methods=['POST'])
         self.blueprint.add_url_rule('/logout', 'logout', methods=['POST'])
