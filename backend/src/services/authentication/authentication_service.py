@@ -1,5 +1,5 @@
 from flask import jsonify, request
 
-class Authentication_Service():
+class AuthenticationService():
     def __init__(self):
         pass
