@@ -1,12 +1,12 @@
 from flask import jsonify
-from src.abstract.abstract_controller import Abstract_Controller
-from src.services.authentication.authentication_service import Authentication_Service
+from src.abstract.abstract_controller import AbstractController
+from src.services.authentication.authentication_service import AuthenticationService
 
-class Authentication_Controller(Abstract_Controller):
+class AuthenticationController(AbstractController):
     def __init__(self):
         super.__init__('auth')
         self.initialize_routes
-        self.authentication_service = Authentication_Service()
+        self.authentication_service = AuthenticationService()
 
     
     def initialize_routes(self):

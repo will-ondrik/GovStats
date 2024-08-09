@@ -1,12 +1,12 @@
-from src.abstract.abstract_controller import Abstract_Controller
-from src.services.house.house_service import House_Service
+from src.abstract.abstract_controller import AbstractController
+from src.services.house.house_service import HouseService
 
-class House_Controller(Abstract_Controller):
+class HouseController(AbstractController):
 
     def __init__(self):
         super().__init__('house')
         self.initialize_routes
-        self.member_service = House_Service()
+        self.member_service = HouseService()
 
 
     def initialize_routes(self):

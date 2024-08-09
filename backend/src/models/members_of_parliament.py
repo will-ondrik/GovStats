@@ -11,7 +11,7 @@ This class represents members of the Canadian Parliament and maps to the 'Member
 Each instance of this class corresponds to a row in the table, with attributes that represent the columns in the table.
 
 """
-class Members_Of_Parliament(Base):
+class MemberOfParliament(Base):
 
     __tablename__ = 'MembersOfParliament'
 

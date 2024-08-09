@@ -1,11 +1,11 @@
-from src.abstract.abstract_controller import Abstract_Controller
-from src.services.party.party_service import Party_Service
+from src.abstract.abstract_controller import AbstractController
+from src.services.party.party_service import PartyService
 
-class Party_Controller(Abstract_Controller):
+class PartyController(AbstractController):
     def __init__(self):
         super().__init__('party')
         self.initialize_routes
-        self.party_service = Party_Service()
+        self.party_service = PartyService()
 
     def initialize_routes(self):
         self.blueprint.add_url_rule('/<string:party>', 'get_all_members_party', methods=['GET'])

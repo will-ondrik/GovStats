@@ -1,5 +1,5 @@
 
-class House_Service():
+class HouseService():
     def __init__(self):
         pass
     

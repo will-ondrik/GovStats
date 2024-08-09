@@ -1,3 +1,3 @@
-class Members_Service():
+class MembersService():
     def __init__(self):
         pass

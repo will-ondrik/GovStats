@@ -1,3 +1,3 @@
-class Party_Service():
+class PartyService():
     def __init__(self):
         pass

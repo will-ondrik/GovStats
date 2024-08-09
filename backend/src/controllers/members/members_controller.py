@@ -1,11 +1,11 @@
-from src.abstract.abstract_controller import Abstract_Controller
-from src.services.members.members_service import Members_Service
+from src.abstract.abstract_controller import AbstractController
+from src.services.members.members_service import MembersService
 
-class Members_Controller(Abstract_Controller):
+class MembersController(AbstractController):
     def __init__(self):
         super().__init__('members')
         self.initialize_routes()
-        self.members_service = Members_Service()
+        self.members_service = MembersService()
 
 
     def initialize_routes(self):
