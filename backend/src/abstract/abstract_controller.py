@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from flask import Blueprint
 
-class Abstract_Controller(ABC):
+class AbstractController(ABC):
 
     def __init__(self, base_path):
         self.base_path = base_path
