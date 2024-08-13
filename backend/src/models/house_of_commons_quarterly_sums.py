@@ -23,9 +23,9 @@ class HouseOfCommonsQuarterlySums(Base):
     contract_total = Column('contractTotal', Float, nullable=False)
 
 
-def __repr__(self):
-    return (
-        f'<HouseOfCommonsQuarterlySums(id={self.id}, year={self.year}, quarter={self.quarter}, '
-        f'salary_total={self.salary_total}, travel_total={self.travel_total}, hospitality_total={self.hospitality_total}, '
-        f'contract_total={self.contract_total})>'
-    )
+    def __repr__(self):
+        return (
+            f'<HouseOfCommonsQuarterlySums(id={self.id}, year={self.year}, quarter={self.quarter}, '
+            f'salary_total={self.salary_total}, travel_total={self.travel_total}, hospitality_total={self.hospitality_total}, '
+            f'contract_total={self.contract_total})>'
+        )
