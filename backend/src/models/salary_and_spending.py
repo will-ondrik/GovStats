@@ -9,7 +9,7 @@ Base = declarative_base()
 ORM model for the SalaryAndSepending table.
 
 This class represents the yearly salary and expenses of each member of the Canadian Parliament and maps to the 'SalaryAndSpending' table in the database.
-Each instance of this class corresponds to a row in the table, with attributes that represents the columns in the table.
+Each instance of this class corresponds to a row in the table, with attributes that represent the columns in the table.
 """
 
 class SalaryAndSpending(Base):
