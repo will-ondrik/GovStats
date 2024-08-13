@@ -34,3 +34,21 @@ class SalaryAndSpending(Base):
             f'salary={self.salary}, travel_expenses={self.travel_expenses}, '
             f'hospitality_expenses={self.hospitality_expenses}, contract_expenses={self.contract_expenses})>'
         )
+    
+
+    @classmethod
+    def get_all_salary_and_spending(cls, session):
+        """Retrieves all entries from the SalaryAndSpending table."""
+        return session.query(cls).all()
+    
+    @classmethod
+    def get_all_salary_and_spending_by_member_id(cls, session, memberId):
+        """Retrieves all entries from the SalaryAndSpending table by member id."""
+        return session.query(cls).filter_by(member_id=memberId).all()
+    
+    @classmethod
+    def get_all_salary_and_spending_by_member_name(cls, session, name):
+        """Retrieves all entries from the SalaryAndSpending table by member name."""
+        return session.query(cls).filter_by(member_name=name).all()
+    
+    
