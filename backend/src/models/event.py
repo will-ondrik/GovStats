@@ -32,3 +32,30 @@ class Event(Base):
             f'<Event(id={self.id}, claim_id={self.claim_id}, claim_number={self.claim_number}, '
             f'type={self.type}, supplier={self.supplier}, total_cost={self.total_cost})>'
         )
+    
+    event = relationship('HospitalityClaim', back_populates='event')
+
+    @classmethod
+    def get_all_event_expenses(cls, session):
+        """Retrieves all entries from the Event table."""
+        return session.query(cls).all()
+    
+    @classmethod
+    def get_all_event_expenses_by_claim_id(cls, session, hospitality_claim_id):
+        """Retrieves all entries from the Event table associated with a HospitalityClaim id."""
+        return session.query(cls).filter_by(claim_id=hospitality_claim_id).all()
+    
+    @classmethod
+    def get_all_event_expenses_by_claim_number(cls, session, claim_num):
+        """Retrieves all entries from the Event table by claim number."""
+        return session.query(cls).filter_by(claim_number=claim_num).all()
+
+    @classmethod
+    def get_all_event_expenses_by_type(cls, session, event_type):
+        """Retrieves all entries from the Event table by Event type."""
+        return session.query(cls).filter_by(type=event_type).all()
+    
+    @classmethod
+    def get_all_event_expenses_by_supplier(cls, session, event_supplier):
+        """Retrieves all entries from the Event table by supplier."""
+        return session.query(cls).filter_by(supplier=event_supplier).all()
