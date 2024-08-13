@@ -21,7 +21,8 @@ class Traveller(Base):
     last_name = Column('lastName', String(75), nullable=False)
     type = Column(String(100), nullable=False)
 
-
+    travel = relationship('Travel', back_populates='traveller')
+    
     def __repr__(self):
         return (
             f'<Traveller(id={self.id}, first_name={self.first_name}, last_name={self.last_name}, type={self.type})>'

@@ -42,3 +42,29 @@ class TravelClaim(Base):
             f'accomodation_costs={self.accomodation_costs}, meals_and_incidentals_costs={self.meals_and_incidentals_costs}, '
             f'regular_points={self.regular_points}, usa_points={self.usa_points}, total_cost={self.total_cost})>'
         )
+    
+
+    @classmethod
+    def get_all_travel_expenses(cls, session):
+        """Retrieves all entries from the TravelClaim table."""
+        return session.query(cls).all()
+
+    @classmethod
+    def get_all_travel_expenses_by_departure(cls, session, departure_location):
+        """Retrieves all entries from the TravelClaim table by location of departure."""
+        return session.query(cls).filter_by(departure=departure_location).all()
+
+    @classmethod
+    def get_all_travel_expenses_by_destination(cls, session, destination_location):
+        """Retrieves entries from the TravelClaim table by location of destination."""
+        return session.query(cls).filter_by(destination=destination_location).all()
+
+    @classmethod
+    def get_all_travel_expenses_by_expense_id(cls, session, expenseId):
+        """Retrieves entries from the TravelClaim table by expense id."""
+        return session.query(cls).filter_by(expense_id=expenseId).all()
+
+    @classmethod
+    def get_all_travel_expenses_by_member_id(cls, session, mpId):
+        """Retrieves entries from the TravelClaim table by member id."""
+        return session.query(cls).filter_by(member_id=mpId).all()

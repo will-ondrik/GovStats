@@ -26,10 +26,10 @@ class ContractClaim(Base):
 
 
     # defines a relationship to the Expense model, allowing access to the related Expense object via 'expense'
-    expense = relationship('Expense', back_populates='travel_claim')
+    expense = relationship('Expense', back_populates='contract_claim')
 
     # defines a relationship to the MembersOfParliament model, allowing access to the related MP object via 'member'
-    member = relationship('MembersOfParliament', back_populates='travel_claim')
+    member = relationship('MembersOfParliament', back_populates='contract_claim')
 
 
     def __repr__(self):
@@ -37,3 +37,35 @@ class ContractClaim(Base):
             f'<ContractClaim(id={self.id}, expense_id={self.expense_id}, member_id={self.member_id}, '
             f'supplier={self.supplier}, date={self.date}, purpose={self.purpose}, total_cost={self.total_cost})>'
         )
+    
+
+    @classmethod
+    def get_all_contract_expenses(cls, session):
+        """Retrieves all entries from the ContractClaim table."""
+        return session.query(cls).all()
+    
+    @classmethod
+    def get_all_contract_expenses_by_expense_id(cls, session, expenseId):
+        """Retrieves all entries from the ContractClaim table by expense id."""
+        return session.query(cls).filter_by(expense_id=expenseId).all()
+    
+    @classmethod
+    def get_all_contract_expenses_by_member_id(cls, session, mpId):
+        """Retrieves all entries from the ContractClaim table by member id."""
+        return session.query(cls).filter_by(member_id=mpId).all()
+    
+    @classmethod
+    def get_all_contract_expenses_by_supplier(cls, session, supplier_name):
+        """Retrieves all entries from the ContractClaim table by supplier."""
+        return session.query(cls).filter_by(supplier=supplier_name).all()
+    
+    @classmethod
+    def get_all_contract_expenses_by_date(cls, session, contract_date):
+        """Retrieves all entries from the ContractClaim table by date."""
+        return session.query(cls).filter_by(date=contract_date).all()
+
+    @classmethod
+    def get_all_contract_expenses_by_purpose(cls, session, contract_purpose):
+        """Retrieves all entries from the ContractClaim table by contract purpose."""
+        return session.query(cls).filter_by(purpose=contract_purpose).all()
+    

@@ -36,3 +36,36 @@ class Travel(Base):
             f'<Travel(id={self.id}, traveller_id={self.traveller_id}, claim_id={self.claim_id}, date={self.date}, '
             f'departure={self.departure}, destination={self.destination}, purpose={self.purpose})>'
         )
+    
+
+    @classmethod
+    def get_all_travel(cls, session):
+        """Retrieves all entries from the Travel table."""
+        return session.query(cls).all()
+    
+    @classmethod
+    def get_all_travel_by_traveller_id(cls, session, travellerId):
+        """Retrieves all entries from the Travel table by traveller id."""
+        return session.query(cls).filter_by(traveller_id=travellerId).all()
+    
+    @classmethod
+    def get_all_travel_by_travel_claim_id(cls, session, claimId):
+        """Retrieves all entries from the Travel table by TravelClaim id."""
+        return session.query(cls).filter_by(claim_id=claimId).all()
+    
+    @classmethod
+    def get_all_travel_by_departure(cls, session, departure_location):
+        """Retrieves all entries from the Travel table by departure location."""
+        return session.query(cls).filter_by(departure=departure_location).all()
+    
+
+    @classmethod
+    def get_all_travel_by_destination(cls, session, destination_location):
+        """Retrieves all entries from the Travel table by destination location."""
+        return session.query(cls).filter_by(destination=destination_location).all()
+    
+
+    @classmethod
+    def get_all_travel_by_purpose(cls, session, travel_purpose):
+        """Retrieves all entries from the Travel table by travel purpose."""
+        return session.query(cls).filter_by(purpose=travel_purpose).all()

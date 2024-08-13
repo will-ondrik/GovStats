@@ -25,10 +25,12 @@ class HospitalityClaim(Base):
     total_cost = Column('totalCost', Float, nullable=False)
 
     # defines a relationship to the Expense model, allowing access to the related Expense object via 'expense'
-    expense = relationship('Expense', back_populates='travel_claim')
+    expense = relationship('Expense', back_populates='hospitality_claim')
 
     # defines a relationship to the MembersOfParliament model, allowing access to the related MP object via 'member'
-    member = relationship('MembersOfParliament', back_populates='travel_claim')
+    member = relationship('MembersOfParliament', back_populates='hospitality_claim')
+
+    event = relationship('Event', back_populates='hospitality_claim')
 
 
     def __repr__(self):
@@ -37,3 +39,29 @@ class HospitalityClaim(Base):
             f'date={self.date}, location={self.location}, attendance={self.attendance}, purpose={self.purpose}, '
             f'total_cost={self.total_cost})>'
         )
+    
+    @classmethod
+    def get_all_hospitality_expenses(cls, session):
+        """Retrieves all entries from the HospitalityClaim table."""
+        return session.query(cls).all()
+    
+    @classmethod
+    def get_all_hospitality_expenses_by_expense_id(cls, session, expenseId):
+        """Retrieves all entries from the HospitalityClaim table by expense id."""
+        return session.query(cls).filter_by(expense_id=expenseId).all()
+    
+
+    @classmethod
+    def get_all_hospitality_expenses_by_member_id(cls, session, memberId):
+        """Retrieves all entries from the HospitalityClaim table by member id."""
+        return session.query(cls).filter_by(member_id=memberId).all()
+    
+    @classmethod
+    def get_all_hospitality_expenses_by_date(cls, session, selected_date):
+        """Retrieves all entries from the HospitalityClaim table on a specified date."""
+        return session.query(cls).filter_by(date=selected_date).all()
+    
+    @classmethod
+    def get_all_hospitality_expeneses_by_purpose(cls, session, hospitality_purpose):
+        """Retrieves all entries from the HospitalityClaim table by purpose."""
+        return session.query(cls).filter_by(purpose=hospitality_purpose).all()
