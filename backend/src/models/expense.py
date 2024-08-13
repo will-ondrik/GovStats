@@ -15,9 +15,11 @@ class Expense(Base):
     year = Column(Integer, nullable=False)
     fiscal_quarter = Column('fiscalQuarter', Integer, nullable=False)
 
-    # defines a relationship to the MembersOfParliament model, allowing access to the related MP object via 'member'
+    # defines relationships to other models, allowing access to the related objects via variable name
     member = relationship('MembersOfParliament', back_populates='expense')
-
+    travel_claim = relationship('TravelClaim', back_populates='expense')
+    contract_claim = relationship('ContractClaim', back_populates='expense')
+    hospitality_claim = relationship('HospitalityClaim', back_populates='expense')
 
     def __repr__(self):
         return (
@@ -25,3 +27,35 @@ class Expense(Base):
             f'reporting_period_start={self.reporting_period_start}, reporting_period_end={self.reporting_period_end}, '
             f'year={self.year}, fiscal_quarter={self.fiscal_quarter})>'
         )
+
+    @classmethod
+    def get_all_expenses(cls, session):
+        """Retrieves all entries from the Expense table."""
+        return session.query(cls).all()
+
+    @classmethod
+    def get_all_expenses_by_year(cls, session, selected_year):
+        """Retrieves all entries from the Expense table by year."""
+        return session.query(cls).filter_by(year = selected_year).all()
+    
+    @classmethod
+    def get_all_expenses_by_fiscal_quarter(cls, session, quarter):
+        """Retrieves all entries from the Expense table by a specified fiscal quarter."""
+        return session.query(cls).filter_by(fiscal_quarter=quarter).all()
+
+    @classmethod
+    def get_all_expenses_by_year_and_quarter(cls, session, selected_year, quarter):
+        """Retrieves all entries from the Expense table by year and fiscal quarter."""
+        return session.query(cls).filter_by(year = selected_year).filter_by(fiscal_quarter=quarter).all()
+
+    @classmethod
+    def get_all_expenses_by_type(cls, session, type):
+        """Retrieves all entries from the Expense table by claim type."""
+        return session.query(cls).filter_by(claim_type=type).all()
+
+    @classmethod
+    def get_all_expenses_by_memberId(cls, session, mp_id):
+        """Retrieves all entries from the Expense table by member id."""
+        return session.query(cls).filter_by(member_id=mp_id).all()
+
+    
