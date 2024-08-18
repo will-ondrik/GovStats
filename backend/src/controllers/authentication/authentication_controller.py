@@ -4,8 +4,8 @@ from src.services.authentication.authentication_service import AuthenticationSer
 
 class AuthenticationController(AbstractController):
     def __init__(self):
-        super.__init__('auth')
-        self.initialize_routes
+        super().__init__('auth')
+        self.initialize_routes()
         self.authentication_service = AuthenticationService()
 
     
