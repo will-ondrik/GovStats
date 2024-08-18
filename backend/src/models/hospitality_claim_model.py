@@ -50,7 +50,6 @@ class HospitalityClaim(Base):
         """Retrieves all entries from the HospitalityClaim table by expense id."""
         return session.query(cls).filter_by(expense_id=expenseId).all()
     
-
     @classmethod
     def get_all_hospitality_expenses_by_member_id(cls, session, memberId):
         """Retrieves all entries from the HospitalityClaim table by member id."""

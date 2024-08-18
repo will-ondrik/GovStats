@@ -61,11 +61,15 @@ class ContractClaim(Base):
     
     @classmethod
     def get_all_contract_expenses_by_date(cls, session, contract_date):
-        """Retrieves all entries from the ContractClaim table by date."""
+        """Retrieves all contract expenses by date."""
         return session.query(cls).filter_by(date=contract_date).all()
+    
+    @classmethod
+    def get_all_contract_expenses_by_year(cls, session, year):
+        """Retrieves all contract expenses by year."""
+        return session.query(cls).filter_by(year=year)
 
     @classmethod
     def get_all_contract_expenses_by_purpose(cls, session, contract_purpose):
         """Retrieves all entries from the ContractClaim table by contract purpose."""
         return session.query(cls).filter_by(purpose=contract_purpose).all()
-    
